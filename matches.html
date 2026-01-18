@@ -8,16 +8,35 @@
 </head>
 <body>
 
-<header>…</header>
+  <!-- Shared header -->
+  <div id="header"></div>
 
-<main>
-  <h1>Matches</h1>
-  <p>
-    Match results and upcoming fixtures will appear here.
-  </p>
-</main>
+  <main>
+    <h1>Matches</h1>
+    <p>
+      Match results and upcoming fixtures will appear here.
+    </p>
+  </main>
 
-<footer>…</footer>
+  <!-- Shared footer -->
+  <div id="footer"></div>
+
+  <!-- Shared header + footer loader -->
+  <script>
+    fetch("/header.html")
+      .then(response => response.text())
+      .then(html => {
+        const header = document.getElementById("header");
+        if (header) header.innerHTML = html;
+      });
+
+    fetch("/footer.html")
+      .then(response => response.text())
+      .then(html => {
+        const footer = document.getElementById("footer");
+        if (footer) footer.innerHTML = html;
+      });
+  </script>
 
 </body>
 </html>
