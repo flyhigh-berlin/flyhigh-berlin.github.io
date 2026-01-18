@@ -8,21 +8,37 @@
 </head>
 <body>
 
-<header>…same header…</header>
+  <!-- Shared header -->
+  <div id="header"></div>
 
-<main>
-  <h1>The Team</h1>
-  <p>
-    Fly High is a recreational volleyball team from Berlin,
-    competing in the Kreisliga Berlin.
-  </p>
-  <p>
-    We are a Freizeitverein focused on fair play, consistency,
-    and improving together as a team.
-  </p>
-</main>
+  <main>
+    <h1>The Team</h1>
 
-<footer>…same footer…</footer>
+    <p>
+      Fly High is a recreational volleyball team from Berlin,
+      competing in the Kreisliga Berlin.
+    </p>
+  </main>
+
+  <!-- Shared footer -->
+  <div id="footer"></div>
+
+  <!-- Shared header + footer loader -->
+  <script>
+    fetch("/header.html")
+      .then(response => response.text())
+      .then(html => {
+        const header = document.getElementById("header");
+        if (header) header.innerHTML = html;
+      });
+
+    fetch("/footer.html")
+      .then(response => response.text())
+      .then(html => {
+        const footer = document.getElementById("footer");
+        if (footer) footer.innerHTML = html;
+      });
+  </script>
 
 </body>
 </html>
